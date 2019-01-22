@@ -1,0 +1,64 @@
+package com.kh.silsub4.lotto.model.vo;
+
+import java.util.Random;
+
+public class Lotto {
+	private int[] lotto;
+   
+   {
+		lotto = new int[6];
+		int i=0;
+		int j=0;
+		while(i<lotto.length) {
+			int ran = new Random().nextInt(45)+1;
+			lotto[i]=ran;
+			while(j<lotto.length) {
+				lotto[j]=ran;
+				if(i>j&&lotto[i]==lotto[j]) {
+					lotto[i]=ran;
+					i--;
+					break;
+				}
+				j++;
+			}
+			i++;
+		}
+	}
+  public Lotto() {}
+	
+	//setter 작성
+	public void setLotto(int[] lotto) {
+		this.lotto = lotto;
+	}
+	//getter 작성
+	public int[] getLotto() {
+		return lotto;
+	}
+	
+	public void information() {
+  
+  String str = "  ";
+		
+		for(int i= 0 ; i<lotto.length ; i++) {
+			if(lotto[i]<10) {
+				str+="0"+lotto[i];
+				
+				if(i!=lotto.length-1) {
+					str+=" ";
+				}
+				else {
+					str+="";
+				}
+			}else {
+				str+=lotto[i];
+				if(i!=lotto.length-1) {
+					str+=" ";
+				}
+				else {
+					str+="";
+				}
+			}
+		}
+		System.out.println(str);
+   }
+ }
